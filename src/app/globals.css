@@ -1,26 +1,43 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* === Light (default) === */
+:root{
+  --background:#fffffa;
+  --foreground:#000000; 
+  --primary:#e0ff17;
+  --secondary:#025aff;
+  --accent:#707071;
+  --muted:#fafafa;
+  --border:#cccccc;
 }
 
+/* === Dark via class .dark di <html> === */
+.dark:root{
+  --background:#0a0a0a;
+  --foreground:#ededed;
+  --primary:#38bdf8;
+  --secondary:#34d399;
+  --accent:#fbbf24;
+  --muted:#a1a1aa;
+  --border:#27272a;
+}
+
+/* Tailwind v4 tokens */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary:    var(--primary);
+  --color-secondary:  var(--secondary);
+  --color-accent:     var(--accent);
+  --color-muted:      var(--muted);
+  --color-border:     var(--border);
+  --font-manrope: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-primary: var(--font-serif), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html, body { height: 100%; }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+body{
+  background:var(--background);
+  color:var(--foreground);
 }
