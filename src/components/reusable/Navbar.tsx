@@ -31,9 +31,10 @@ export default function Navbar() {
           </div>
         </div>
         <div className='flex items-center gap-x-2'>
-          <button onClick={()=> router.push('/enrollment-class')} className='text-sm flex items-center gap-x-1 rounded-lg h-[32px] px-3 bg-gradient-to-b from-primary to-primary/60 text-foreground font-medium cursor-pointer border border-border/50'>
+          <button onClick={()=> router.push('/enrollment-class')} className='text-sm flex items-center gap-x-1 rounded-lg h-[32px] px-3 bg-gradient-to-b from-primary to-primary/60 text-foreground font-medium cursor-pointer border border-border/50 relative group'>
             <SparkleIcon weight='regular'/>
             <span>Enroll now</span>
+             <p className='absolute bg-white w-12 h-0 text-accent h-6 rounded-full top-0 left-1/2 -translate-x-1/2 border border-border text-xs flex items-center opacity-0 justify-center group-hover:opacity-100 group-hover:h-6 group-hover:w-18 group-hover:top-10  transition-all duration-400'>Enroll Now</p>
           </button>
           <button onClick={()=> router.push('/auth/admin-login')} className='text-sm flex items-center gap-x-1 rounded-lg h-[32px] px-3 bg-gradient-to-b from-neutral-700 to-foreground text-white font-medium cursor-pointer border border-border/50 relative group'>
             <PenNibIcon weight='fill'/>

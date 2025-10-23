@@ -17,12 +17,12 @@ export default function PricingPage() {
         </div>
         <div className='-mt-32 relative'>
           <Title title={['Choose the plan', 'that fits your needs', 'simple, transparent, flexible']} desc={'Pricing'} IconBase={MoneyIcon}/>
-          <div className='mt-16 grid grid-cols-3 gap-x-3 px-3'>
+          <div className='mt-24 grid grid-cols-3 gap-x-3 px-3'>
             {pricingData.map((item, i) => {
               const buttonStyle = [
-                'bg-white border border-border text-foreground',
-                'bg-foreground text-white border-foreground',
-                'bg-white border border-secondary text-foreground',
+                'bg-white border border-border text-foreground hover:bg-foreground hover:text-white',
+                'bg-foreground text-white border-foreground hover:bg-primary hover:text-foreground hover:border-primary',
+                'bg-white border border-secondary text-foreground hover:bg-secondary hover:text-white hover:border-white',
               ]
               return (
                 <div key={i} className={`${i === pricingData.length - 1? 'bg-secondary' : 'bg-muted'} h-[80vh] rounded-xl p-8 flex flex-col justify-between font-medium border border-border`}>

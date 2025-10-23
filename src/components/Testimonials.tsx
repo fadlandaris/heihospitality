@@ -7,10 +7,14 @@ import Btn from './reusable/Btn'
 import blurBg from "../../public/blur.png"
 import Image from 'next/image'
 import pixelPic from "../../public/pixel.png"
+import { usePathname } from 'next/navigation'
+import { useRouter } from 'next/router'
 
 export default function Testimonials() {
   const testiBg = "https://images.unsplash.com/photo-1483192683197-083ca7511846?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1248"
-  
+  const pathname = usePathname()
+  const router = useRouter
+
   return (
     <section>
       <div className="max-w-[1400px] mx-auto border-x border-dashed border-border bg-white py-24">
@@ -23,7 +27,7 @@ export default function Testimonials() {
         />
 
         {/* === Button === */}
-        <div className="flex items-center justify-center mt-8">
+        <div className={`${pathname === '/testimonials' ? 'hidden' : 'flex'}  items-center justify-center mt-8`}>
           <Btn variant={true} value="Read Stories" />
         </div>
 
