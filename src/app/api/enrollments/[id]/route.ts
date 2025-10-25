@@ -13,7 +13,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   const patch = await req.json();
 
   // optional: batasi field yang boleh di-update admin
-  const allowed: (keyof typeof patch)[] = ['firstName','lastName','whatsapp','email','address','programTitle','status'];
+  const allowed: (keyof typeof patch)[] = ['firstName','lastName','whatsapp','email','address','programTitle','status', 'age'];
   const safePatch: any = {};
   for (const k of allowed) if (k in patch) safePatch[k as string] = (patch as any)[k];
 

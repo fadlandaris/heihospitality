@@ -26,7 +26,7 @@ export const image = [
 export default function Whyus() {
   return (
     <section className='bg-foreground text-white relative'>
-      <Image src={dotsBg} alt={''} fill className='object-cover object-fill absolute inset-0 opacity-20'/>
+      <Image src={dotsBg} alt={''} fill className='object-cover object-fill absolute inset-0 opacity-7'/>
       <div className='max-w-[1400px] mx-auto py-24 relative'>
         <Title title={['We offer wide range', 'hospitality Services', 'for anyone']} desc={'Why choose us?'} IconBase={HandHeartIcon}/>
         <div className='flex items-center justify-center mt-8'>
@@ -49,17 +49,17 @@ export default function Whyus() {
             )
           })}
         </div>
-        <div className='mt-32 flex items-start justify-between'>
-          <div>
+        <div className='mt-32 grid grid-cols-3'>
+          <div className='col-span-2'>
             <div className='tracking-tighter font-medium text-4xl leading-11'>
-              <h1>Revolutionize</h1>
-              <h1>Healthcare with AI That</h1>
-              <h1 className='text-accent font-serif text-5xl'>saves life</h1>
+              <h1>Empowering</h1>
+              <h1>Future leaders in</h1>
+              <h1 className='text-accent font-serif text-5xl'>Hospitality education</h1>
             </div>
-            <p className='text-[18px] text-white/60 w-[70%] mt-6 font-medium'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis porro, iure vel excepturi maxime corporis.</p>
+            <p className='text-[18px] text-white/60 w-[70%] mt-6 font-medium'>Di HEI, kami menumbuhkan keunggulan dalam bidang hospitality melalui pembelajaran inovatif, standar global, dan pengalaman nyata di dunia kerja. Program kami dirancang untuk mengembangkan keterampilan profesional, karakter, dan kepemimpinan guna membentuk generasi baru ahli hospitality</p>
           </div>
-          <div className='w-1/4'>
-            <div className='flex items-center'>
+          <div className=''>
+            <div className='flex items-center justify-end'>
               {image.map((item, i) => {
                 const rotate = [
                   'rotate-4',
@@ -71,8 +71,8 @@ export default function Whyus() {
                 )
               })}
             </div>
-            <p className='mt-6 font-semibold text-[18px]'>Your Hospitality dream</p>
-            <p className='mt-4 text-white/60 font-medium'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum omnis placeat dicta voluptatum harum dolorem.</p>
+            <p className='mt-6 font-semibold text-[18px] text-right'>Your Hospitality dream</p>
+            <p className='mt-4 text-white/60 font-medium text-right'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum omnis placeat dicta voluptatum harum dolorem.</p>
           </div>
         </div>
       </div>

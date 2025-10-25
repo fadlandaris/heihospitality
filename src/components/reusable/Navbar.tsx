@@ -18,7 +18,7 @@ export default function Navbar() {
             <div className='p-1 rounded-lg bg-primary border border-border/50'>
               <IslandIcon weight='fill' size={14}/>
             </div>
-            <p className='font-bold text-md tracking-tighter'>Hei Education</p>
+            <p className='font-bold text-md tracking-tighter'>Hei Hospitality</p>
           </div>
           <div className='flex items-center gap-x-4'>
             {navLinks.map((item, i) => {

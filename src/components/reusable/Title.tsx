@@ -20,7 +20,7 @@ export default function Title({title, desc, IconBase} : TitleProps) {
       <div className='text-center mt-6 tracking-tighter font-medium'>
         {title.map((item, i) => {
           return (
-            <h1 key={i} className={`${i === title.length - 1 ? 'font-serif text-6xl italic' : 'text-5xl'} ${i === title.length - 2 ? 'text-accent' : ''}`}>
+            <h1 key={i} className={`${i === title.length - 1 ? 'font-serif text-6xl italic' : 'text-5xl'} ${i === title.length - 2 ? 'text-accent/80' : ''}`}>
               {item}
             </h1>
           )

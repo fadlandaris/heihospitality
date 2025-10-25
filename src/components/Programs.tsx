@@ -4,11 +4,13 @@ import React from 'react'
 import { programData } from '@/data/data'
 import gridBg from "../../public/grid.png"
 import Image from 'next/image'
-
+import { usePathname } from 'next/navigation'
 export default function Programs() {
+  const pathname = usePathname()
+
   return (
     <section>
-       <div className='max-w-[1400px] mx-auto border-x border-dashed border-border bg-white grid grid-cols-1'>
+       <div className={`max-w-[1400px] mx-auto border-dashed border-border ${pathname === '/programs' ? 'border-0' : 'border-x'} bg-white grid grid-cols-1`}>
         {programData.map((item, i) => {
           return (
             <div key={i} className={`${item.id === programData.length - 1 ? 'border-0' : 'border-b'} grid grid-cols-2 border-dashed border-border p-24`}>
@@ -20,7 +22,10 @@ export default function Programs() {
                       <item.icon size={25}/>
                     </div>
                   </div>
-                  <h1 className='text-4xl my-4 w-[70%] font-medium tracking-tighter'>{item.title}</h1>
+                  <div className='my-4 text-4xl font-medium tracking-tighter'>
+                    <h1>{item.title}</h1>
+                    <h1>{item.title2}</h1>
+                  </div>
                   <p className='text-2xl font-serif'>0{item.id + 1}</p>
                 </div>
                 <div className='flex flex-col gap-y-4 tracking-tight'>

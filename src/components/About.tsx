@@ -27,7 +27,7 @@ const blob = [
 ]
 
 export default function About() {
-  const aboutBg = "https://images.unsplash.com/photo-1675416864738-373085409a19?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687"
+  const aboutBg = "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1171"
 
   return (
     <section className='border-b border-dashed border-border'>
@@ -49,7 +49,7 @@ export default function About() {
         </div>
         <div className='mt-16 max-w-5xl mx-auto grid grid-cols-2 items-start'>
           <div className=''>
-            <p className='w-[70%] text-[18px] font-semibold text-foreground'>The most intuitive platform we've used, helping us make faster, data-driven decisions with confidence.</p>
+            <p className='text-[18px] font-semibold text-foreground'>HEI (Hospitality Education Institute) adalah lembaga pendidikan dan pelatihan perhotelan di Subang, Jawa Barat, yang membekali generasi muda dengan keterampilan standar internasional untuk bersaing di industri perhotelan global dan kapal pesiar, serta membantu mereka mendapatkan pekerjaan.</p>
             <div className='mt-6 flex items-end gap-x-4'>
               <Image src={founderPic} width={60} alt={''} className='rounded-lg border-4 border-border/50' />
               <div>
