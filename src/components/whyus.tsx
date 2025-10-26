@@ -49,17 +49,17 @@ export default function Whyus() {
             )
           })}
         </div>
-        <div className='mt-32 grid grid-cols-3'>
-          <div className='col-span-2'>
+        <div className='mt-32 grid grid-cols-4'>
+          <div className='col-span-3'>
             <div className='tracking-tighter font-medium text-4xl leading-11'>
               <h1>Empowering</h1>
               <h1>Future leaders in</h1>
               <h1 className='text-accent font-serif text-5xl'>Hospitality education</h1>
             </div>
-            <p className='text-[18px] text-white/60 w-[70%] mt-6 font-medium'>Di HEI, kami menumbuhkan keunggulan dalam bidang hospitality melalui pembelajaran inovatif, standar global, dan pengalaman nyata di dunia kerja. Program kami dirancang untuk mengembangkan keterampilan profesional, karakter, dan kepemimpinan guna membentuk generasi baru ahli hospitality</p>
+            <p className='text-[18px] text-white/60 w-[70%] mt-6 font-medium'>Di HEI, kami menumbuhkan keunggulan dalam bidang hospitality melalui pembelajaran inovatif, standar global, dan pengalaman nyata di dunia kerja.</p>
           </div>
-          <div className=''>
-            <div className='flex items-center justify-end'>
+          <div>
+            <div className='flex items-center'>
               {image.map((item, i) => {
                 const rotate = [
                   'rotate-4',
@@ -71,8 +71,8 @@ export default function Whyus() {
                 )
               })}
             </div>
-            <p className='mt-6 font-semibold text-[18px] text-right'>Your Hospitality dream</p>
-            <p className='mt-4 text-white/60 font-medium text-right'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum omnis placeat dicta voluptatum harum dolorem.</p>
+            <p className='mt-6 font-semibold text-[18px]'>Your Hospitality dream</p>
+            <p className='mt-4 text-white/60 font-medium'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum omnis placeat dicta voluptatum harum dolorem.</p>
           </div>
         </div>
       </div>

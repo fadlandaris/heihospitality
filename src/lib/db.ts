@@ -1,20 +1,32 @@
-import mongoose from 'mongoose';
+import mongoose, { Mongoose } from 'mongoose';
 
-const uri = process.env.MONGODB_URI!;
-if (!uri) throw new Error('Missing MONGODB Credentials');
-
-let cached = (global as any).mongoose as {
-  conn: typeof mongoose | null;
-  promise: Promise<typeof mongoose> | null;
-} | undefined;
-
-if (!cached) cached = (global as any).mongoose = { conn: null, promise: null };
-
-export async function dbConnect() {
-  if (cached!.conn) return cached!.conn;
-  if (!cached!.promise) {
-    cached!.promise = mongoose.connect(uri, { dbName: 'hei_enrollment' }).then((m: any) => m);
+// Pastikan bertipe string dari awal (IIFE)
+const uri: string = (() => {
+  const v = process.env.MONGODB_URI;
+  if (!v || v.length === 0) {
+    throw new Error('Missing MONGODB Credentials');
   }
-  cached!.conn = await cached!.promise;
-  return cached!.conn;
+  return v;
+})();
+
+declare global {
+  // eslint-disable-next-line no-var
+  var __mongooseCache:
+    | { conn: Mongoose | null; promise: Promise<Mongoose> | null }
+    | undefined;
+}
+
+const cache =
+  globalThis.__mongooseCache ??
+  (globalThis.__mongooseCache = { conn: null, promise: null });
+
+export async function dbConnect(): Promise<Mongoose> {
+  if (cache.conn) return cache.conn;
+
+  if (!cache.promise) {
+    cache.promise = mongoose.connect(uri, { dbName: 'hei_enrollment' });
+  }
+
+  cache.conn = await cache.promise;
+  return cache.conn;
 }

@@ -5,19 +5,72 @@ import { dbConnect } from '../../../../lib/db';
 import { Enrollment } from '../../../../models/enrollment';
 import { getSession } from '../../../../lib/session';
 
+// Definisikan field yang boleh di-update admin:
+type AdminUpdatableKeys =
+  | 'firstName'
+  | 'lastName'
+  | 'whatsapp'
+  | 'email'
+  | 'address'
+  | 'programTitle'
+  | 'status'
+  | 'age';
+
+type AdminUpdate = Partial<{
+  firstName: string;
+  lastName: string;
+  whatsapp: number | string; // jika perlu, bisa dinormalisasi terpisah
+  email: string;
+  address: string;
+  programTitle: string;
+  status: string;
+  age: number;
+}>;
+
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
   const session = await getSession();
   if (!session.admin) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   await dbConnect();
-  const patch = await req.json();
 
-  // optional: batasi field yang boleh di-update admin
-  const allowed: (keyof typeof patch)[] = ['firstName','lastName','whatsapp','email','address','programTitle','status', 'age'];
-  const safePatch: any = {};
-  for (const k of allowed) if (k in patch) safePatch[k as string] = (patch as any)[k];
+  const patchUnknown = await req.json();
+  const patch = patchUnknown as Record<string, unknown>;
 
-  const updated = await Enrollment.findByIdAndUpdate(params.id, { $set: safePatch }, { new: true });
+  const allowed: AdminUpdatableKeys[] = [
+    'firstName','lastName','whatsapp','email','address','programTitle','status','age'
+  ];
+
+  const safePatch: AdminUpdate = {};
+  for (const k of allowed) {
+    if (k in patch) {
+      // ketikkan dengan tegas per key
+      const val = patch[k];
+      switch (k) {
+        case 'age':
+          if (typeof val === 'number') safePatch.age = val;
+          else if (typeof val === 'string' && Number.isInteger(Number(val))) safePatch.age = Number(val);
+          break;
+        case 'whatsapp':
+          // biarkan number|string, validasi bisa di sisi lain jika perlu
+          if (typeof val === 'number' || typeof val === 'string') safePatch.whatsapp = val;
+          break;
+        case 'firstName':
+        case 'lastName':
+        case 'email':
+        case 'address':
+        case 'programTitle':
+        case 'status':
+          if (typeof val === 'string') (safePatch as any)[k] = val; // ← jika ingin 0% any: pakai cast per case
+          break;
+      }
+    }
+  }
+
+  const updated = await Enrollment.findByIdAndUpdate(
+    params.id,
+    { $set: safePatch },
+    { new: true }
+  );
   if (!updated) return NextResponse.json({ error: 'Not found' }, { status: 404 });
   return NextResponse.json(updated);
 }

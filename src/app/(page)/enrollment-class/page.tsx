@@ -90,7 +90,7 @@ export default function EnrollmentFormPage() {
             <div className="relative tracking-normal">
               <div className="grid grid-cols-2 gap-12 tracking-tighter">
                 <div>
-                  <p className="text-accent mb-1">What's your first name? *</p>
+                  <p className="text-accent mb-1">What&apos;s your first name? *</p>
                   <input
                     className="w-full py-3 border-b border-border focus:outline-none text-foreground placeholder:text-[#d1d1d3]"
                     placeholder="e.g. Fatih"
@@ -100,7 +100,7 @@ export default function EnrollmentFormPage() {
                   />
                 </div>
                 <div>
-                  <p className="text-accent mb-1">What's your second name? *</p>
+                  <p className="text-accent mb-1">What&apos;s your second name? *</p>
                   <input
                     className="w-full py-3 border-b border-border focus:outline-none text-foreground placeholder:text-[#d1d1d3]"
                     placeholder="e.g. Surya"
@@ -110,7 +110,7 @@ export default function EnrollmentFormPage() {
                   />
                 </div>
                 <div>
-                  <p className="text-accent mb-1">What's your main email? *</p>
+                  <p className="text-accent mb-1">What&apos;s your main email? *</p>
                   <input
                     type="email"
                     className="w-full py-3 border-b border-border focus:outline-none text-foreground placeholder:text-[#d1d1d3]"
@@ -121,7 +121,7 @@ export default function EnrollmentFormPage() {
                   />
                 </div>
                 <div>
-                  <p className="text-accent mb-1">What's your whatsapp number? *</p>
+                  <p className="text-accent mb-1">What&apos;s your whatsapp number? *</p>
                   <input
                     type="tel"
                     inputMode="numeric"
@@ -148,7 +148,7 @@ export default function EnrollmentFormPage() {
                   />
                 </div>
                 <div>
-                  <p className="text-accent mb-1">Choose program *</p>
+                  <p className="text-accent mb-1">Choose a program *</p>
                   <select
                     className="w-full py-3 border-b border-border focus:outline-none text-foreground"
                     value={form.programTitle}
@@ -160,7 +160,7 @@ export default function EnrollmentFormPage() {
                   </select>
                 </div>
                 <div className="col-span-2">
-                  <p className="text-accent mb-3">What's your current address? *</p>
+                  <p className="text-accent mb-3">What&apos;s your current address? *</p>
                   <textarea
                     className="w-full p-3 border border-border focus:outline-none text-foreground placeholder:text-[#d1d1d3] h-30 bg-white rounded-xl"
                     placeholder="e.g. Jl.Dahlia Raya Blok G no 25"
