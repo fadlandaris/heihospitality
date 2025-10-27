@@ -31,11 +31,11 @@ export default function About() {
   const aboutBg = "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1171"
 
   return (
-    <section className='border-b border-dashed border-border'>
-      <div className='max-w-[1400px] mx-auto relative border-x border-dashed border-border bg-white py-24'>
-        <Title title={['Experience seamless', 'hospitality at your fingertips', '—anytime, anywhere']} desc={'Get to know us'} IconBase={CommandIcon}/>
+    <section className='border-b border-dashed border-border px-4 lg:px-8'>
+      <div className='max-w-[1400px] mx-auto relative border-x border-dashed border-border bg-white py-12 lg:py-24'>
+        <Title title={['Experience seamless', 'hospitality we provide', 'anytime, anywhere']} desc={'Get to know us'} IconBase={CommandIcon}/>
         <Fadein delay={0.22}>
-          <div className='max-w-5xl mx-auto mt-16 h-[90vh] relative'>
+          <div className='max-w-5xl mx-auto mt-8 lg:mt-16 h-[30vh] md:h-[60vh] lg:h-[90vh] relative'>
             <div className='flex items-center absolute left-0 right-0 top-0 justify-between'>
               {blob.map((item) => {
                 return (
@@ -50,12 +50,12 @@ export default function About() {
             </div>
           </div>
         </Fadein>
-        <div className='mt-16 max-w-5xl mx-auto grid grid-cols-2 items-start'>
+        <div className='mt-8 lg:mt-16 max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-start px-4 lg:px-8'>
           <div className=''>
             <Fadein delay={0.34}>
-               <p className='text-[18px] font-semibold text-foreground'>HEI (Hospitality Education Institute) adalah lembaga pendidikan dan pelatihan perhotelan di Subang, Jawa Barat, yang membekali generasi muda dengan keterampilan standar internasional untuk bersaing di industri perhotelan global dan kapal pesiar, serta membantu mereka mendapatkan pekerjaan.</p>
+               <p className='lg:text-[18px] font-semibold text-foreground text-center px-4 lg:px-0 lg:text-left'>HEI (Hospitality Education Institute) adalah lembaga pendidikan dan pelatihan perhotelan di Subang, Jawa Barat, yang membekali generasi muda dengan keterampilan standar internasional untuk bersaing di industri perhotelan global dan kapal pesiar, serta membantu mereka mendapatkan pekerjaan.</p>
             </Fadein>
-            <div className='mt-6 flex items-end gap-x-4'>
+            <div className='mt-6 flex items-center lg:items-end justify-center lg:justify-start  gap-x-4'>
               <Fadein delay={0.45}>
                  <Image src={founderPic} width={60} alt={''} className='rounded-lg border-4 border-border/50' />
               </Fadein>
@@ -69,7 +69,7 @@ export default function About() {
               </div>
             </div>
           </div>
-          <div className='flex items-center justify-end gap-x-12'>
+          <div className='flex items-center justify-center lg:justify-end gap-x-12 mt-8 lg:mt-0'>
             {aboutData.map((item, i) => {
               return (
                 <div className='text-center' key={i}>

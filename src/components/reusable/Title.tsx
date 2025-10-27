@@ -21,10 +21,10 @@ export default function Title({title, desc, IconBase} : TitleProps) {
         </Fadein>
       </div>
       <Fadein delay={0.12}>
-        <div className='text-center mt-6 tracking-tighter font-medium'>
+        <div className='text-center mt-6 tracking-tighter font-medium px-4'>
           {title.map((item, i) => {
             return (
-              <h1 key={i} className={`${i === title.length - 1 ? 'font-serif text-6xl italic' : 'text-5xl'} ${i === title.length - 2 ? 'text-accent/80' : ''}`}>
+              <h1 key={i} className={`${i === title.length - 1 ? 'font-serif text-4xl lg:text-6xl italic' : 'text-3xl lg:text-5xl'} ${i === title.length - 2 ? 'text-accent/80' : ''}`}>
                 {item}
               </h1>
             )

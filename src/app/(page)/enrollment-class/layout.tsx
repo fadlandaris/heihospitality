@@ -12,6 +12,7 @@ export default function EnrollmentLayout({ children }: { children: React.ReactNo
     <div>
       <Navbar/>
       {children}
+
     </div>
   )
 }

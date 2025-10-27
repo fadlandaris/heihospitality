@@ -1,5 +1,7 @@
 import { GlobeSimpleIcon, FlagBannerFoldIcon, BoatIcon, CoffeeIcon } from "@phosphor-icons/react"
 import sultanPic from "../../public/sultan.jpeg"
+import agungPic from "../../public/agung.jpeg"
+import rizkiPic from "../../public/rizki.jpeg"
 
 export const navLinks = [
   {
@@ -147,22 +149,24 @@ export const pricingData = [
 export const testiData = [
   {
     id: 0,
-    title: 'HK Attendant | Norwegian CL',
-    desc: 'Proses tak pernah mengkhianati hasil dan semua perjuangan ku berbuah manis. Bisa bekerja di salah satu perusahaan Cruise Line terbesar di Dunia dan keliling dunia. Terimakasih HEI - Hospitallity Education Institute SUBANG',
+    title: 'HK Attendant • Norwegian CL',
+    desc: 'Proses tak pernah mengkhianati hasil dan semua perjuangan ku berbuah manis. Bisa bekerja di salah satu perusahaan Cruise Line terbesar di Dunia dan keliling dunia. Terimakasih HEI - Hospitallity Education Institute SUBANG 🚀',
     name: 'Sultan Ahmad R',
-    pic: sultanPic
+    pic: sultanPic,
   },
   {
     id: 1,
-    title: 'Waiter - Middle East',
-    desc: 'Hei.. kalian anak-anak muda ayo mari jangan buang waktu kalian dirumah. langkahkan kaki kalian dan berjuang untuk masa depan. Pokoknya kalian tidak akan menyesal deh bergabung dengan HEI, saya buktinya HEI The hospitality champions',
-    name: 'Rizki Saputra'
+    title: 'Waiter • Middle East',
+    desc: 'Hei.. kalian anak-anak muda ayo mari jangan buang waktu kalian dirumah. langkahkan kaki kalian dan berjuang untuk masa depan. Pokoknya kalian tidak akan menyesal deh bergabung dengan HEI, saya buktinya HEI The hospitality champions 🏆',
+    name: 'Rizki Saputra',
+    pic: rizkiPic,
   },
   {
     id: 2,
-    title: 'HK Attendant - Princess Cruise Lines',
-    desc: 'Alhamdulillah di berikan kelancaran semuanya setelah bergabung dengan HEI. Mimpiku untuk berkarir di luar negeri akhirnya terwujud. Thank you very much HEI - dan TJL cabang Subang',
-    name: 'Agung'
+    title: 'HK Attendant • Princess Cruise Lines',
+    desc: 'Alhamdulillah di berikan kelancaran semuanya setelah bergabung dengan HEI. Mimpiku untuk berkarir di luar negeri akhirnya terwujud. Thank you very much HEI - dan TJL cabang Subang, kalian benar-benar yang terbaik 👍',
+    name: 'Agung',
+    pic: agungPic,
   },
 ]
 

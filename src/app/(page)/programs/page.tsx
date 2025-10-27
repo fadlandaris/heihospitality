@@ -27,8 +27,8 @@ const blob = [
 
 export default function ProgramsPage() {
   return (
-    <section>
-      <div className='max-w-[1400px] mx-auto border-x border-dashed border-border bg-white pt-42 relative'>
+    <section className='overflow-hidden '>
+      <div className='max-w-[1400px] mx-auto border-x border-dashed border-border bg-white pt-24 lg:pt-42 relative'>
         <div className='relative'>
           <div className='flex items-center absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 justify-between w-[600px] '>
             {blob.map((item) => {
@@ -38,11 +38,11 @@ export default function ProgramsPage() {
             })}
           </div>
           <div className='relative'>
-            <Title title={['Experience world-class training', 'through exclusive programs', 'built for real industry success']} desc={'Programs'} IconBase={AppWindowIcon}/>
+            <Title title={['World-class training', 'Exclusive programs', 'Real industry success']} desc={'Programs'} IconBase={AppWindowIcon}/>
           </div>
         </div>
-        <Programs/>
       </div>
+      <Programs/>
       <Whyus/>
     </section>
   )

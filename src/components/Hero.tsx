@@ -36,8 +36,8 @@ export default function Hero() {
 
   return (
     <Blur delay={0}>
-      <section className='w-full h-[110vh] bg-cover bg-top relative py-32' style={{ backgroundImage: `url(${heroBg})` }}>
-        <Image src={dotsBg} alt={''} layout='fill' objectFit='cover' className='z-10 opacity-2'/>
+      <section className='w-full h-screen  lg:h-[110vh] bg-cover bg-top relative py-12 px-4 lg:px-8 lg:py-24 xl:py-32' style={{ backgroundImage: `url(${heroBg})` }}>
+        <Image src={dotsBg} alt={''} layout='fill' objectFit='cover' className='z-10 opacity-5'/>
         <div className='absolute inset-0 bg-black/50 z-0'/>
         <div className='max-w-[1400px] mx-auto relative flex flex-col justify-end items-start text-white h-full z-20'>
           <div className=''>
@@ -49,7 +49,7 @@ export default function Hero() {
                 </div>
               </div>
             </Fadein>
-            <div className='font-serif text-7xl my-6'>
+            <div className='font-serif text-5xl lg:text-7xl my-6'>
               <Fadein delay={0.225}>
                 <h1>Unlock your </h1>
               </Fadein>

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Navbar from "@/components/reusable/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "HEI • Programs",
@@ -11,6 +12,7 @@ export default function ProgramsLayout({ children }: { children: React.ReactNode
     <div>
       <Navbar/>
       {children}
+      <Footer/>
     </div>
   );
 }

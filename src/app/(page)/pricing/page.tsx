@@ -30,8 +30,8 @@ const blob = [
 
 export default function PricingPage() {
   return (
-    <section>
-      <div className='max-w-[1400px] mx-auto border-x border-dashed border-border bg-white pt-42'>
+    <section className='overflow-hidden px-4 lg:px-8'>
+      <div className='max-w-[1400px] mx-auto border-x border-dashed border-border bg-white pt-24 lg:pt-42'>
         <div className='relative'>
           <div className='flex items-center absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 justify-between w-[600px] '>
             {blob.map((item) => {
@@ -44,7 +44,7 @@ export default function PricingPage() {
             <Title title={['Choose the plan', 'that fits your needs', 'simple, transparent, flexible']} desc={'Pricing'} IconBase={MoneyIcon}/>
           </div>
         </div>
-        <div className='mt-24 grid grid-cols-3 gap-x-3 w-full px-3 relative pb-24 border-b border-border border-dashed'>
+        <div className='mt-12 lg:mt-24 grid lg:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-3 w-full relative pb-24 border-b border-border border-dashed px-4 lg:px-8'>
           {pricingData.map((item, i) => {
             const buttonStyle = [
               'bg-white border border-border text-foreground hover:bg-foreground hover:text-white',

@@ -17,11 +17,11 @@ export default function Testimonials() {
 
   return (
     <section>
-      <div className="max-w-[1400px] mx-auto border-x border-dashed border-border bg-white pt-24">
+      <div className="max-w-[1400px] mx-auto border-x border-dashed border-border bg-white pt-12 lg:pt-24">
         
         {/* === Header === */}
         <Title 
-          title={['What our students say', 'Real stories, real experiences', '—Straight from our customers']} 
+          title={['What our students say', 'Real experiences', 'now its your turn']} 
           desc={'Testimonials'} 
           IconBase={UserIcon}
         />
@@ -35,7 +35,7 @@ export default function Testimonials() {
       
         {/* === Background Section === */}
         <Blur delay={0.5}>
-          <div className="relative w-full mt-32 flex items-end justify-center">
+          <div className={`relative w-full ${pathname === '/testimonials' ? 'mt-32' : 'mt-24'} flex items-end justify-center`}>
             {/* Background blur image */}
             <Image 
               src={blurBg} 
@@ -47,10 +47,11 @@ export default function Testimonials() {
 
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white z-30" />
-
+            
+           
             {/* Main image card */}
             <Fadein delay={0.7}>
-              <div className="relative w-[900px] h-[70vh] rounded-[25px] z-20 border-8 border-border/10">
+              <div className="relative w-[400px] md:w-[500px] md:h-[50vh] lg:w-[900px] h-[30vh] lg:h-[80vh] xl:h-[70vh] rounded-[25px] z-20 border-8 border-border/10">
                 <Image src={testiBg} alt="Testimonials background" fill className="object-cover rounded-[20px]" priority/>
                 <div className="absolute inset-0 bg-accent/40 backdrop-blur-sm rounded-[25px]" />
                 <Image src={pixelPic} alt={''} width={800} className='absolute left-1/2 -translate-x-1/2 bottom-0 rounded-[25px]'/>
