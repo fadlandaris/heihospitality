@@ -27,12 +27,16 @@ type AdminUpdate = Partial<{
   age: number;
 }>;
 
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
+export async function PATCH(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
   const session = await getSession();
   if (!session.admin) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   await dbConnect();
 
+  const { id } = await params;
   const patchUnknown = await req.json();
   const patch = patchUnknown as Record<string, unknown>;
 
@@ -75,7 +79,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   }
 
   const updated = await Enrollment.findByIdAndUpdate(
-    params.id,
+    id,
     { $set: safePatch },
     { new: true }
   );
@@ -83,12 +87,17 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   return NextResponse.json(updated);
 }
 
-export async function DELETE(_: Request, { params }: { params: { id: string } }) {
+export async function DELETE(
+  _: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
   const session = await getSession();
   if (!session.admin) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   await dbConnect();
-  const deleted = await Enrollment.findByIdAndDelete(params.id);
+  
+  const { id } = await params;
+  const deleted = await Enrollment.findByIdAndDelete(id);
   if (!deleted) return NextResponse.json({ error: 'Not found' }, { status: 404 });
   return NextResponse.json({ ok: true });
 }
