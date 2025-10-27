@@ -19,7 +19,7 @@ type AdminUpdatableKeys =
 type AdminUpdate = Partial<{
   firstName: string;
   lastName: string;
-  whatsapp: number | string; // jika perlu, bisa dinormalisasi terpisah
+  whatsapp: number | string;
   email: string;
   address: string;
   programTitle: string;
@@ -43,7 +43,6 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   const safePatch: AdminUpdate = {};
   for (const k of allowed) {
     if (k in patch) {
-      // ketikkan dengan tegas per key
       const val = patch[k];
       switch (k) {
         case 'age':
@@ -51,16 +50,25 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
           else if (typeof val === 'string' && Number.isInteger(Number(val))) safePatch.age = Number(val);
           break;
         case 'whatsapp':
-          // biarkan number|string, validasi bisa di sisi lain jika perlu
           if (typeof val === 'number' || typeof val === 'string') safePatch.whatsapp = val;
           break;
         case 'firstName':
+          if (typeof val === 'string') safePatch.firstName = val;
+          break;
         case 'lastName':
+          if (typeof val === 'string') safePatch.lastName = val;
+          break;
         case 'email':
+          if (typeof val === 'string') safePatch.email = val;
+          break;
         case 'address':
+          if (typeof val === 'string') safePatch.address = val;
+          break;
         case 'programTitle':
+          if (typeof val === 'string') safePatch.programTitle = val;
+          break;
         case 'status':
-          if (typeof val === 'string') (safePatch as any)[k] = val; // ← jika ingin 0% any: pakai cast per case
+          if (typeof val === 'string') safePatch.status = val;
           break;
       }
     }
