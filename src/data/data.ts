@@ -43,7 +43,7 @@ export const programData = [
     title: 'Hotel training Exclusive',
     title2: 'International region',
     describe: [
-      { title: 'Learning Description', desc: 'pembelajaran terkait pelayanan hotel berbasis International'},
+      { title: 'Learning Description', desc: 'Pembelajaran terkait pelayanan hotel berbasis International'},
       { title: 'Focus of Learning', desc: 'Salah satu kelas utamanya adalah House Keeping'},
     ],
     icon: GlobeSimpleIcon,
@@ -54,7 +54,7 @@ export const programData = [
     title: 'Hotel training intensive',
     title2: 'local region',
     describe: [
-      { title: 'Learning Description', desc: 'pembelajaran terkait pelayanan hotel berbasis local dalam negeri'},
+      { title: 'Learning Description', desc: 'Pembelajaran terkait pelayanan hotel berbasis local dalam negeri'},
       { title: 'Focus of Learning', desc: 'Salah satu kelas utamanya adalah House Keeping'},
     ],
     icon: FlagBannerFoldIcon,
@@ -65,7 +65,7 @@ export const programData = [
     title: 'Hotel training ',
     title2: 'executive cruise ship',
     describe: [
-      { title: 'Learning Description', desc: 'pembelajaran terkait pelayanan kapal pesiar berbasis international'},
+      { title: 'Learning Description', desc: 'Pembelajaran terkait pelayanan kapal pesiar berbasis international'},
       { title: 'Focus of Learning', desc: 'Salah satu kelas utamanya adalah barista specalist'},
     ],
     icon: BoatIcon,
@@ -76,7 +76,7 @@ export const programData = [
     title: 'Barista cruise ship',
     title2: 'training specialist',
     describe: [
-      { title: 'Learning Description', desc: 'pembelajaran terkait pelayanan kapal pesiar berbasis international dan lokal'},
+      { title: 'Learning Description', desc: 'Pembelajaran terkait pelayanan kapal pesiar berbasis international dan lokal'},
       { title: 'Focus of Learning', desc: 'Salah satu kelas utamanya adalah barista specalist'},
     ],
     icon: CoffeeIcon,
@@ -169,27 +169,28 @@ export const testiData = [
 export const faqData = [
   {
     id: 0,
-    title: 'Is my data secure in platform ?',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil dolore placeat maiores veritatis ratione ipsum asperiores, distinctio quas delectus recusandae suscipit adipisci animi labore aperiam vero. Ad est atque minima.'
+    title: "Apa itu Hospitality Education Institute (HEI)?",
+    desc: "HEI adalah lembaga pendidikan dan pelatihan perhotelan yang berlokasi di Subang, Jawa Barat. Kami menyediakan pelatihan berkualitas untuk mempersiapkan generasi muda bekerja di industri perhotelan global dan kapal pesiar internasional."
   },
   {
     id: 1,
-    title: 'Is my data secure in platform ?',
-    desc: ' Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid iusto, id officia modi atque deleniti Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil dolore placeat maiores veritatis ratione ipsum asperiores, distinctio quas delectus recusandae suscipit adipisci animi labore aperiam vero. Ad est atque minima'
+    title: "Apa saja program pelatihan yang ditawarkan HEI?",
+    desc: "HEI menawarkan berbagai program pelatihan, seperti pelayanan hotel, manajemen restoran, housekeeping, dan pelatihan khusus untuk bekerja di kapal pesiar. Semua program dirancang sesuai dengan standar industri internasional."
   },
   {
     id: 2,
-    title: 'Is my data secure in platform ?',
-    desc: ' Lorem ipsum, dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil dolore placeat maiores veritatis ratione ipsum asperiores, distinctio quas delectus recusandae suscipit adipisci animi labore aperiam vero. Ad est atque minima'
+    title: "Apakah lulusan HEI dijamin mendapatkan pekerjaan?",
+    desc: "Kami bekerja sama dengan berbagai hotel, resor, dan kapal pesiar internasional untuk membantu lulusan mendapatkan pekerjaan. Meskipun kami tidak bisa menjamin pekerjaan, kami memberikan dukungan penuh dalam penempatan karir."
   },
   {
     id: 3,
-    title: 'Is my data secure in platform ?',
-    desc: ' Lorem ipsum, dolor sit amet consectetur adipisicing elitLorem ipsum dolor sit amet consectetur adipisicing elit. Nihil dolore placeat maiores veritatis ratione ipsum asperiores, distinctio quas delectus recusandae suscipit adipisci animi labore aperiam vero. Ad est atque minima'
+    title: "Berapa lama durasi pelatihan di HEI?",
+    desc: "Durasi pelatihan bervariasi tergantung program yang dipilih. Umumnya, program pelatihan berlangsung antara 3 hingga 12 bulan, dengan kombinasi teori dan praktik langsung."
   },
   {
     id: 4,
-    title: 'Is my data secure in platform ?',
-    desc: ' Lorem ipsum, dolor sit amet consectetur adipisicing eli Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil dolore placeat maiores veritatis ratione ipsum asperiores, distinctio quas delectus recusandae suscipit adipisci animi labore aperiam vero. Ad est atque minima'
-  },
-]
+    title: "Apakah HEI menyediakan sertifikat setelah pelatihan?",
+    desc: "Ya, setiap peserta yang menyelesaikan pelatihan akan mendapatkan sertifikat resmi dari HEI. Sertifikat ini diakui oleh industri perhotelan dan dapat meningkatkan peluang karir Anda."
+  }
+];
+

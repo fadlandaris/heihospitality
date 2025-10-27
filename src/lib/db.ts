@@ -10,7 +10,6 @@ const uri: string = (() => {
 })();
 
 declare global {
-  // eslint-disable-next-line no-var
   var __mongooseCache:
     | { conn: Mongoose | null; promise: Promise<Mongoose> | null }
     | undefined;
@@ -22,11 +21,9 @@ const cache =
 
 export async function dbConnect(): Promise<Mongoose> {
   if (cache.conn) return cache.conn;
-
   if (!cache.promise) {
     cache.promise = mongoose.connect(uri, { dbName: 'hei_enrollment' });
   }
-
   cache.conn = await cache.promise;
   return cache.conn;
 }

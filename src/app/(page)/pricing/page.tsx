@@ -7,6 +7,7 @@ import { pricingData } from '@/data/data'
 import { WhatsappLogoIcon } from '@phosphor-icons/react'
 import Faq from '@/components/Faq'
 import Footer from '@/components/Footer'
+import Fadein from '@/animation/Fadein'
 
 const blob = [
   {
@@ -51,31 +52,33 @@ export default function PricingPage() {
               'bg-white border border-secondary text-foreground hover:bg-secondary hover:text-white hover:border-white',
             ]
             return (
-              <div key={i} className={`${i === pricingData.length - 1? 'bg-secondary' : 'bg-muted'} h-[85vh] rounded-md p-8 flex flex-col justify-between border border-border/30`}>
-                <div className=''>
-                  <p className={`${i === pricingData.length - 1? 'text-white' : 'text-secondary'} font-medium`}>{item.title}</p>
-                  <div className={`${i === pricingData.length - 1? 'text-white' : ''} flex items-end gap-x-1 my-4 font-medium`}>
-                    <p>IDR</p>
-                    <p className='text-3xl font-bold'>{item.price}</p>
-                    <p>/{item.duration}</p>
+              <Fadein key={i} delay={0.3 * item.id}>
+                <div className={`${i === pricingData.length - 1? 'bg-secondary' : 'bg-muted'} h-[85vh] rounded-md p-8 flex flex-col justify-between border border-border/30`}>
+                  <div className=''>
+                    <p className={`${i === pricingData.length - 1? 'text-white' : 'text-secondary'} font-medium`}>{item.title}</p>
+                    <div className={`${i === pricingData.length - 1? 'text-white' : ''} flex items-end gap-x-1 my-4 font-medium`}>
+                      <p>IDR</p>
+                      <p className='text-3xl font-bold'>{item.price}</p>
+                      <p>/{item.duration}</p>
+                    </div>
+                    <p className={`${i === pricingData.length - 1? 'text-white/70' : 'text-accent'} text-sm`}>{item.desc}</p>
+                    <div className='mt-6 flex flex-col text-sm'>
+                      {item.point.map((items, i) => {
+                        return (
+                          <div key={i} className={`${i === item.point.length - 1 ? 'border-b' : ''} border-t border-border/50 py-4`}>
+                            <p className={`${item.id === pricingData.length - 1 ? 'text-white' : ''} mb-1 capitalize font-semibold`}>{items.title}</p>
+                            <p className={`${item.id === pricingData.length - 1 ? 'text-white/70' : 'text-accent'}`}>{items.desc}</p>
+                          </div>
+                        )
+                      })}
+                    </div>
                   </div>
-                  <p className={`${i === pricingData.length - 1? 'text-white/70' : 'text-accent'} text-sm`}>{item.desc}</p>
-                  <div className='mt-6 flex flex-col text-sm'>
-                    {item.point.map((items, i) => {
-                      return (
-                        <div key={i} className={`${i === item.point.length - 1 ? 'border-b' : ''} border-t border-border/50 py-4`}>
-                          <p className={`${item.id === pricingData.length - 1 ? 'text-white' : ''} mb-1 capitalize font-semibold`}>{items.title}</p>
-                          <p className={`${item.id === pricingData.length - 1 ? 'text-white/70' : 'text-accent'}`}>{items.desc}</p>
-                        </div>
-                      )
-                    })}
-                  </div>
+                  <button className={`${buttonStyle[item.id]} text-sm flex items-center justify-center gap-x-1 border p-3 rounded-xl hover:scale-102 transition-all duration-400 cursor-pointer font-medium`}>
+                    Whatsapp Kami
+                    <WhatsappLogoIcon/>
+                  </button>
                 </div>
-                <button className={`${buttonStyle[item.id]} text-sm flex items-center justify-center gap-x-1 border p-3 rounded-xl hover:scale-102 transition-all duration-400 cursor-pointer font-medium`}>
-                  Whatsapp Kami
-                  <WhatsappLogoIcon/>
-                </button>
-              </div>
+              </Fadein>
             )
           })}
         </div>
