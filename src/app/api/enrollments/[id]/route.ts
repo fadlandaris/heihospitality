@@ -28,9 +28,12 @@ type AdminUpdate = Partial<{
   age: number;
 }>;
 
+/** Subset key bertipe string murni (bukan number/union) */
+type StringOnlyKeys = Exclude<AdminUpdatableKeys, 'age' | 'whatsapp'>;
+
 /** Guard: pastikan key yang di-update termasuk whitelist */
 function isAdminUpdateKey(key: string): key is AdminUpdatableKeys {
-  const allowed: AdminUpdatableKeys[] = [
+  const allowed: ReadonlyArray<AdminUpdatableKeys> = [
     'firstName',
     'lastName',
     'whatsapp',
@@ -40,18 +43,35 @@ function isAdminUpdateKey(key: string): key is AdminUpdatableKeys {
     'status',
     'age',
   ];
-  return allowed.includes(key as AdminUpdatableKeys);
+  return (allowed as readonly string[]).includes(key);
+}
+
+/** Type guard: objek punya properti params (tipe masih unknown) */
+function hasParams(o: unknown): o is { params: unknown } {
+  return typeof o === 'object' && o !== null && 'params' in (o as Record<string, unknown>);
+}
+
+/** Type guard: cek "promise-like" */
+function isPromiseLike<T = unknown>(v: unknown): v is Promise<T> {
+  return typeof v === 'object' && v !== null && 'then' in (v as Record<string, unknown>);
+}
+
+/** Type guard: params object dengan id:string */
+function isParamsObj(v: unknown): v is { id: string } {
+  if (typeof v !== 'object' || v === null) return false;
+  const idVal = (v as { id?: unknown }).id;
+  return typeof idVal === 'string';
 }
 
 /** Helper universal ambil id dari ctx.params (bisa Promise atau objek biasa) */
 async function getIdFromContext(ctx: unknown): Promise<string | undefined> {
-  // @ts-ignore — kita sengaja permissive agar kompatibel lintas versi
-  const raw = (ctx as any)?.params;
-  if (!raw) return undefined;
+  if (!hasParams(ctx)) return undefined;
+  const raw = ctx.params;
 
-  // Jika Promise, tunggu dulu
-  const params = typeof raw?.then === 'function' ? await raw : raw;
-  return params?.id as string | undefined;
+  const params = isPromiseLike(raw) ? await raw : raw;
+  if (!isParamsObj(params)) return undefined;
+
+  return params.id;
 }
 
 /** ====== PATCH /api/enrollments/[id] ======
@@ -73,38 +93,48 @@ export async function PATCH(req: Request, ctx: unknown) {
 
     const patchUnknown = await req.json();
     const patch = patchUnknown as Record<string, unknown>;
-    const safePatch: AdminUpdate = {};
+
+    // safePatch tanpa "any": gabungan
+    // - field string-only disimpan via Record<StringOnlyKeys, string>
+    // - field age & whatsapp disimpan via Pick<AdminUpdate, 'age' | 'whatsapp'>
+    const safePatch: Partial<Record<StringOnlyKeys, string>> &
+      Partial<Pick<AdminUpdate, 'age' | 'whatsapp'>> = {};
 
     for (const k in patch) {
-      if (isAdminUpdateKey(k)) {
-        const val = patch[k];
-        switch (k) {
-          case 'age': {
-            if (typeof val === 'number') {
-              safePatch.age = val;
-            } else if (typeof val === 'string' && Number.isInteger(Number(val))) {
-              safePatch.age = Number(val);
-            }
-            break;
+      if (!isAdminUpdateKey(k)) continue;
+
+      const val = patch[k];
+      switch (k) {
+        case 'age': {
+          if (typeof val === 'number') {
+            safePatch.age = val;
+          } else if (typeof val === 'string' && Number.isInteger(Number(val))) {
+            safePatch.age = Number(val);
           }
-          case 'whatsapp': {
-            if (typeof val === 'number' || typeof val === 'string') {
-              safePatch.whatsapp = val;
-            }
-            break;
+          break;
+        }
+        case 'whatsapp': {
+          if (typeof val === 'number' || typeof val === 'string') {
+            safePatch.whatsapp = val;
           }
-          default: {
-            if (typeof val === 'string') {
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              (safePatch as any)[k] = val;
-            }
-            break;
+          break;
+        }
+        default: {
+          // k dipastikan termasuk StringOnlyKeys
+          if (typeof val === 'string') {
+            const key = k as StringOnlyKeys;
+            (safePatch as Partial<Record<StringOnlyKeys, string>>)[key] = val;
           }
+          break;
         }
       }
     }
 
-    const updated = await Enrollment.findByIdAndUpdate(id, { $set: safePatch }, { new: true });
+    const updated = await Enrollment.findByIdAndUpdate(
+      id,
+      { $set: safePatch },
+      { new: true }
+    );
     if (!updated) {
       return NextResponse.json({ error: 'Not found' }, { status: 404 });
     }
